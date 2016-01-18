@@ -1,6 +1,7 @@
 package de.dhbwka.java.exercise.operatorn;
 
 import de.dhbwka.java.exercise.utility.Tuple;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +12,7 @@ import java.util.Scanner;
  */
 public class Easter {
 
-    private final  static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM y");
+    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM y");
 
     public static void main(String[] args){
         Scanner myScanner = new Scanner(System.in);
@@ -36,7 +37,7 @@ public class Easter {
     }
 
     private static String makeDate(Tuple<Double, Integer> tuple) {
-       LocalDate date = LocalDate.of(tuple.y, Month.MARCH, 1).plusDays(Math.round(tuple.x -1));
+        LocalDate date = LocalDate.of(tuple.y, Month.MARCH, 1).plusDays(Math.round(tuple.x - 1));
         return date.format(formatter);
     }
 }
