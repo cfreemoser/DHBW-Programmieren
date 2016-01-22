@@ -16,8 +16,8 @@ public class Easter {
 
     public static void main(String[] args){
         Scanner myScanner = new Scanner(System.in);
-        System.out.println("Enter a Year");
-        System.out.println("Easter is on " + makeDate(calculateEaster(myScanner.nextInt())) + "\n");
+        System.out.println("Jahr eingeben");
+        System.out.println("Ostern ist am " + makeDate(calculateEaster(myScanner.nextInt())) + "\n");
         main(null);
     }
 
