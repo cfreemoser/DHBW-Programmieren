@@ -21,7 +21,7 @@ public class Easter {
         main(null);
     }
 
-    private static Tuple<Double, Integer> calculateEaster(int year) {
+    private static Tuple<Integer, Integer> calculateEaster(int year) {
         int a = year % 19;
         int b = year % 4;
         int c = year % 7;
@@ -31,12 +31,12 @@ public class Easter {
         int m = (15 + k - p - q) % 30;
         int n = (4 + k - q) % 7;
         int d = (19*a + m) % 30;
-        double e = (2* b + 4 *c + 6*d + n) % 7;
-        double easter = 22 + d + e;
+        int e = (2* b + 4 *c + 6*d + n) % 7;
+        int easter = 22 + d + e;
         return new Tuple<>(easter, year);
     }
 
-    private static String makeDate(Tuple<Double, Integer> tuple) {
+    private static String makeDate(Tuple<Integer, Integer> tuple) {
         LocalDate date = LocalDate.of(tuple.y, Month.MARCH, 1).plusDays(Math.round(tuple.x - 1));
         return date.format(formatter);
     }
