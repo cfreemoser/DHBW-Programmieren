@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by cem on 05.02.16.
+ * Created by cem on 05.02.16. Eigentlich hab ich das erstellt (cemig) 
  */
 public class BubbleSort {
 
