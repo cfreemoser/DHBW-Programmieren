@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by cem on 05.02.16. HUHU CEMIG
- */
+ * Created by cem on 05.02.16. HUHU CEMIG Test 2
+ */ 
 public class BubbleSort {
 
     public static void main(String[] args) {
