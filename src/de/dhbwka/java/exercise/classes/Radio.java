@@ -35,6 +35,8 @@ public class Radio {
 	public void setFrequency(double frequency){
 		if(frequency>=85 && frequency<=110)
 			this.frequency = frequency;
+		else
+			this.frequency = 99.9;
 	}
 	
 	public String toString(){
