@@ -15,34 +15,27 @@ public class Horner {
 
 
     public double getValue(double x) {
-        return horner(polynome, x, 0);
+        return hornerSchema(x, 0);
     }
 
-    double horner(double a[], double x, int n) {
-        double h;
-        if (n < polynome.length - 1)
-            h = horner(a, x, n + 1);
-        else
-            return a[n];
-
-        return h * x + a[n];
+    private double hornerSchema(double x, int n) {
+        if (n >= polynome.length - 1) return polynome[n];
+        else return hornerSchema(x, n + 1) * x + polynome[n];
     }
 
 
     @Override
     public String toString() {
+        DecimalFormat fmt = new DecimalFormat("+(#,##0.0);-(#,##0.0)");
+        StringBuilder builder = new StringBuilder("");
         if (polynome.length > 0) {
-            DecimalFormat fmt = new DecimalFormat("+(#,##0.0);-(#,##0.0)");
-            String polynom = "";
-            for (int i = polynome.length - 1; i > 0; i--) {
-                double temp = polynome[i];
-                if (temp != 0) {
-                    polynom += fmt.format(temp) + "x^" + i;
-                }
-            }
-            if (polynome[0] > 0) polynom += fmt.format(polynome[0]);
-            return polynom;
-        } else return "";
+            for (int i = polynome.length - 1; i > 0; i--)
+                if (polynome[i] != 0) builder.append(fmt.format(polynome[i])).append("x^").append(i);
+
+            if (polynome[0] > 0) builder.append(polynome[0]);
+        }
+        return builder.toString();
     }
 
 }
+
