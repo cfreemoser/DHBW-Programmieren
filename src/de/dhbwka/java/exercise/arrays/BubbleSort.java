@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by cem on 05.02.16. Eigentlich hab ich das erstellt (cemig) 
+ * Created by cem on 05.02.16. Eigentlich hab ich das erstellt (cemig) <- nö
  */
 public class BubbleSort {
 
@@ -33,6 +33,21 @@ public class BubbleSort {
         }
 
 
+    }
+
+    public static int[] bubbleShort(int zahlen[]) {
+        while (!isShorted(zahlen)) {
+
+            for (int i = 0; i < zahlen.length; i++) {
+                if ((i + 1) <= zahlen.length - 1 && zahlen[i] > zahlen[i + 1]) {
+                    int temp = zahlen[i];
+                    zahlen[i] = zahlen[i + 1];
+                    zahlen[i + 1] = temp;
+                }
+
+            }
+        }
+        return zahlen;
     }
 
     public static boolean isShorted(int[] array) {
