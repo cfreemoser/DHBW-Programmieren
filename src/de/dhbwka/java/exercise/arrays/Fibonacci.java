@@ -7,10 +7,10 @@ public class Fibonacci {
     public static void main(String[] args) {
 
 
-        int[] fibcnacci = new int[50];
+        int[] fibcnacci = new int[1000];
         fibcnacci[0] = 1;
         fibcnacci[1] = 1;
-        for (int i = 2; i < 50; i++) {
+        for (int i = 2; i < 1000; i++) {
             fibcnacci[i] = fibcnacci[i - 1] + fibcnacci[i - 2];
         }
 

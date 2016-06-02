@@ -10,25 +10,23 @@ import java.util.Optional;
 public class TextFile {
 
 
-    private final File myfile;
+    private final File mFile;
     private String[] lines;
 
-    public TextFile(File myfile) throws FileNotFoundException {
-        this.myfile = myfile;
+    public TextFile(File mFile) throws FileNotFoundException {
+        this.mFile = mFile;
         lines = readLine();
     }
 
     public TextFile(String path) throws FileNotFoundException {
-        this.myfile = new File(path);
+        this.mFile = new File(path);
         lines = readLine();
     }
 
     private String[] readLine() throws FileNotFoundException {
-        FileReader fileReader = new FileReader(myfile);
+        FileReader fileReader = new FileReader(mFile);
         BufferedReader myBufferedReader = new BufferedReader(fileReader);
         return myBufferedReader.lines().toArray(String[]::new);
-
-
     }
 
     public void read() {
@@ -43,7 +41,7 @@ public class TextFile {
     public void write() {
         Optional<FileOutputStream> fileOutputStream = Optional.empty();
         try {
-            fileOutputStream = Optional.of(new FileOutputStream(myfile));
+            fileOutputStream = Optional.of(new FileOutputStream(mFile));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -88,6 +86,7 @@ public class TextFile {
 
     public void close() {
         write();
+        lines = null;
     }
 
 }
