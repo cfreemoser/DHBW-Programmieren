@@ -10,10 +10,10 @@ public class LeapYear {
 
     public static void main(String[] args) {
         Scanner myScanner = new Scanner(System.in);
-        System.out.println("Jahr eingeben");
+        System.out.println("jahr eingeben");
         int jahr = myScanner.nextInt();
         /*
-        Ein Jahr ist ein Schaltjahr, wenn es durch vier teilbar ist, nicht aber wenn es durch 100 teilbar ist, es
+        Ein jahr ist ein Schaltjahr, wenn es durch vier teilbar ist, nicht aber wenn es durch 100 teilbar ist, es
         sei denn, es ist durch 400 teilbar.
 
          */
