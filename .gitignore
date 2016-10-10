@@ -4,6 +4,13 @@
 # IntelliJ project files
 .idea
 *.iml
+*.txt
 out
 gen
 # Created by .ignore support plugin (hsz.mobi)
+Würde bookslib.dtd löschen
+Würde hs_err_pid4946.log löschen
+Würde lib.xml löschen
+Würde output.xml löschen
+Würde src/de/dhbwka/resources/ löschen
+Würde ~temp.txt löschen
