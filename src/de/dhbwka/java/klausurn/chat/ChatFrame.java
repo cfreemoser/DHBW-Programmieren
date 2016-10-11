@@ -1,17 +1,18 @@
 package de.dhbwka.java.klausurn.chat;
 
-import de.dhbwka.java.klausurn.defaultStuff.JKlausurFrame;
+import de.dhbwka.java.klausurn.initStuff.JBaseFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
  * Created by cem on 05.10.16.
  */
-abstract class ChatFrame extends JKlausurFrame {
+abstract class ChatFrame extends JBaseFrame implements ActionListener {
     private final static String NICK_ACTION = "NICK_ACTION";
     private final static String WHO_ACTION = "WHO_ACTION";
     private final static String LOGOFF_ACTION = "LOGOFF_ACTION";

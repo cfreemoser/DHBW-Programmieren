@@ -1,6 +1,6 @@
 package de.dhbwka.java.klausurn.bookingForm;
 
-import de.dhbwka.java.klausurn.defaultStuff.JKlausurFrame;
+import de.dhbwka.java.klausurn.initStuff.JBaseFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +11,7 @@ import java.util.Calendar;
 /**
  * Created by cem on 10.10.16.
  */
-public class BookingForm extends JKlausurFrame {
-    //constans
-    private static final String ACTION_BOOK = "BOOK";
-    private static final String ACTION_DISCARD = "DISCARD";
+public class BookingForm extends JBaseFrame {
     //Data
     final Flug flug;
     //Helper
@@ -68,13 +65,11 @@ public class BookingForm extends JKlausurFrame {
         //Button
         buttomPanel.setLayout(new GridLayout(1, 2));
         JButton buchenButton = new JButton("Buchen");
-        buchenButton.setActionCommand(ACTION_BOOK);
-        buchenButton.addActionListener(this);
+        buchenButton.addActionListener(this::bookButtonClicked);
         buttomPanel.add(buchenButton);
 
         JButton discardButton = new JButton("Verwerfen");
-        discardButton.setActionCommand(ACTION_DISCARD);
-        discardButton.addActionListener(this);
+        discardButton.addActionListener(this::discardButtonClicked);
         buttomPanel.add(discardButton);
 
         this.setLayout(new BorderLayout());
@@ -85,18 +80,30 @@ public class BookingForm extends JKlausurFrame {
 
     }
 
+    private void discardButtonClicked(ActionEvent actionEvent) {
+        updateAbles.forEach(buttonInterface -> buttonInterface.update(false));
+    }
+
+    private void bookButtonClicked(ActionEvent actionEvent) {
+        updateAbles.forEach(buttonInterface -> buttonInterface.update(true));
+
+    }
+
     private void updateHeaderPanel() {
         timeLabel.setText(Calendar.getInstance().getTime().toString());
         freiePlaetzeLabel.setText(String.valueOf(flug.freiePlaetze()));
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        updateAbles.forEach(buttonInterface -> buttonInterface.update(e.getActionCommand() == ACTION_BOOK));
-    }
+
 
     @Override
     public void tick() {
         updateHeaderPanel();
+    }
+
+
+    @Override
+    public String setLogFileName() {
+        return "";
     }
 }

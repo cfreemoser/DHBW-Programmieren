@@ -8,6 +8,5 @@ public class Main {
         Airline lufthanse = new Airline("DLH", "Deutsche Lufthansa");
         Flug f = new Flug("LH4711", lufthanse, frankfurt, newyork, 15, 4);
         BookingForm bookingForm = new BookingForm(f);
-
     }
 }

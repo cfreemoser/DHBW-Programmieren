@@ -1,6 +1,6 @@
 package de.dhbwka.java.klausurn.jbay;
 
-import de.dhbwka.java.klausurn.defaultStuff.Logger;
+import de.dhbwka.java.klausurn.initStuff.SimpleLogger;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +11,10 @@ import java.util.Calendar;
 /**
  * Created by cem on 09.10.16.
  */
-public class MyJPanel extends JPanel implements ActionListener {
+public class MyJPanel extends JPanel implements ActionListener, SimpleLogger {
     final Auktion auktion;
     final Component parrent;
-    final Bieter bieter;
+    Bieter bieter;
 
     //JLabels
     JLabel name = new JLabel();
@@ -37,8 +37,6 @@ public class MyJPanel extends JPanel implements ActionListener {
         button.addActionListener(this);
         this.add(button);
         updateGUI();
-        Logger.getInstance().setFileName("jbay.txt");
-
     }
 
     public void updateGUI() {
@@ -58,7 +56,7 @@ public class MyJPanel extends JPanel implements ActionListener {
             String result = JOptionPane.showInputDialog(parrent, "Bitte ein neues Gebot eingebenen" + System.lineSeparator() + "Mindestens " + min + " Euro", min);
             try {
                 double sum = Double.parseDouble(result);
-                Logger.getInstance().log("(" + Calendar.getInstance().getTime().toString() + ") " + "Gebot von " + bieter.getFullName() + " für " + auktion.getWare().getTitle() + ": " + sum + " Euro");
+                log("(" + Calendar.getInstance().getTime().toString() + ") " + "Gebot von " + bieter.getFullName() + " für " + auktion.getWare().getTitle() + ": " + sum + " Euro");
                 if (auktion.gebotAbgeben(new Gebot(bieter, sum))) {
                     JOptionPane.showMessageDialog(parrent, "Sie sind höchstbietender!");
                     TerminalHelper.getInstance().updateTerminals();
@@ -68,12 +66,17 @@ public class MyJPanel extends JPanel implements ActionListener {
 
 
             } catch (Exception e) {
-                Logger.getInstance().log(e.getMessage());
+                log(e.getMessage());
                 JOptionPane.showMessageDialog(parrent, "Eingabe war Fehlerhaft!");
             }
         }
         {
         }
 
+    }
+
+    @Override
+    public String setLogFileName() {
+        return "jbay.txt";
     }
 }

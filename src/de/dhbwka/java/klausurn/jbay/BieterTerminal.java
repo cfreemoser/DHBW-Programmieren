@@ -1,17 +1,16 @@
 package de.dhbwka.java.klausurn.jbay;
 
-import de.dhbwka.java.klausurn.defaultStuff.JKlausurFrame;
+import de.dhbwka.java.klausurn.initStuff.JBaseFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.stream.Collectors;
 
 /**
  * Created by cem on 09.10.16.
  */
-public class BieterTerminal extends JKlausurFrame {
+public class BieterTerminal extends JBaseFrame {
     final Bieter bieter;
     final Auktionshaus ah;
     final Component parrent = this;
@@ -39,11 +38,9 @@ public class BieterTerminal extends JKlausurFrame {
 
     private JPanel buildAuktionenPanel() {
         JPanel panel = new JPanel();
-        myPnaels = ah.getAuktionen().stream().map(auktion -> {
-            return new MyJPanel(auktion, parrent, bieter);
-        }).collect(Collectors.toList());
+        myPnaels = ah.getAuktionen().stream().map(auktion -> new MyJPanel(auktion, parrent, bieter)).collect(Collectors.toList());
         panel.setLayout(new GridLayout(myPnaels.size(), 1));
-        for (MyJPanel somePanel : myPnaels) panel.add(somePanel);
+        myPnaels.forEach(panel::add);
         return panel;
     }
 
@@ -56,8 +53,9 @@ public class BieterTerminal extends JKlausurFrame {
         timeLabel.setText(Calendar.getInstance().getTime().toString());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    @Override
+    public String setLogFileName() {
+        return null;
     }
 }

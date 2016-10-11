@@ -62,4 +62,10 @@ public class ChatSession extends ChatFrame {
     public void tick() {
 
     }
+
+
+    @Override
+    public String setLogFileName() {
+        return null;
+    }
 }
