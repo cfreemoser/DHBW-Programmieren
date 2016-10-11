@@ -32,6 +32,7 @@ public class Auktion {
             return false;
         } else if (g.getHoechstbetrag() >= preis + INCREMENT && g.getHoechstbetrag() > gebot.getHoechstbetrag()) {
             preis = gebot.getHoechstbetrag() + INCREMENT;
+            gebot = g;
             return true;
         } else if (gebot.getBieter().equals(gebot.getBieter())) {
             if (g.getHoechstbetrag() > gebot.getHoechstbetrag()) {
