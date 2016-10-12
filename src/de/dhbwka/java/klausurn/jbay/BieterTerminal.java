@@ -53,9 +53,4 @@ public class BieterTerminal extends JBaseFrame {
         timeLabel.setText(Calendar.getInstance().getTime().toString());
     }
 
-
-    @Override
-    public String setLogFileName() {
-        return null;
-    }
 }

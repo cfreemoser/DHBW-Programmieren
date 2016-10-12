@@ -101,9 +101,4 @@ public class BookingForm extends JBaseFrame {
         updateHeaderPanel();
     }
 
-
-    @Override
-    public String setLogFileName() {
-        return "";
-    }
 }

@@ -63,9 +63,4 @@ public class ChatSession extends ChatFrame {
 
     }
 
-
-    @Override
-    public String setLogFileName() {
-        return null;
-    }
 }
