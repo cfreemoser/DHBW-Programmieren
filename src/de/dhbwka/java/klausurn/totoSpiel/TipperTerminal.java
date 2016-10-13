@@ -6,6 +6,7 @@ import de.dhbwka.java.klausurn.initStuff.JBaseFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,8 @@ public class TipperTerminal extends JBaseFrame {
         paarungenPanel = new JPPanel(totalisator.getPaarungen());
         this.add(paarungenPanel, BorderLayout.CENTER);
         this.tippButton.addActionListener(this::abschliessen);
-        this.repaint();
+        this.setVisible(false);
+        this.setVisible(true);
     }
 
     private void abschliessen(ActionEvent actionEvent) {
@@ -67,11 +69,21 @@ public class TipperTerminal extends JBaseFrame {
         }
 
 
+        JButton button = new JButton("OK");
         JDialog dialog = new JDialog(this, false);
-        dialog.add(new JLabel(sumCorrect + " richtig getippt"));
         dialog.setTitle("Ergebnis von " + tipper.getVorname() + " " + tipper.getNachname());
         dialog.setSize(200, 200);
+        dialog.setLayout(new BorderLayout());
+        dialog.add(new JLabel(sumCorrect + " richtig getippt"), BorderLayout.CENTER);
+        dialog.add(button, BorderLayout.SOUTH);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
         dialog.setVisible(true);
+        dialog.setBounds(this.getX() + this.getWidth() / 3, this.getY() + this.getHeight() / 4, this.getWidth() / 2, this.getHeight() / 2);
     }
 
     @Override
